@@ -1,6 +1,6 @@
 # 🧠 MemoryApp - Working Memory Training Application
 
-A stunning React-based progressive web app designed to dramatically improve working memory and fluid intelligence through scientifically-validated cognitive exercises.
+A React-based progressive web app designed to dramatically improve working memory and fluid intelligence through scientifically-validated cognitive exercises.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
