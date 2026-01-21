@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/store/useUserStore';
 import { UserGoal, ExperienceLevel } from '@/types/user';
+import Footer from '@/components/layout/Footer';
 
 export default function OnboardingFlow() {
   const [step, setStep] = useState(1);
@@ -18,8 +19,9 @@ export default function OnboardingFlow() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-6">
-      <Card className="max-w-2xl w-full p-8 bg-surface">
+    <div className="min-h-screen bg-background flex flex-col">
+      <div className="flex-1 flex items-center justify-center p-6">
+        <Card className="max-w-2xl w-full p-8 bg-surface">
         {step === 1 && (
           <div>
             <h1 className="text-3xl font-bold mb-4">Welcome to MemoryApp 🧠</h1>
@@ -164,7 +166,9 @@ export default function OnboardingFlow() {
             </div>
           </div>
         )}
-      </Card>
+        </Card>
+      </div>
+      <Footer />
     </div>
   );
 }
