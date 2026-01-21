@@ -13,12 +13,13 @@
     --surface: 215 25% 17%;        /* #1e293b - Slate */
     --text-primary: 213 32% 97%;   /* #f1f5f9 - Light slate */
     --text-secondary: 215 16% 65%; /* #94a3b8 - Gray */
+    --border: 215 20% 25%;         /* #334155 - Gray border */
 
     --radius: 0.5rem;
   }
 
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
