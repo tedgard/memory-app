@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { SessionMetrics, ExerciseType, ExerciseStats } from '@/types/exercise';
-import { ProgressStats, ProgressTimeline, DailyProgress } from '@/types/progress';
+import type { SessionMetrics, ExerciseType, ExerciseStats } from '@/types/exercise';
+import type { ProgressStats, ProgressTimeline, DailyProgress } from '@/types/progress';
 
 interface ProgressState {
   sessions: SessionMetrics[];

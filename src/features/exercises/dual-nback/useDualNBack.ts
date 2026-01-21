@@ -5,7 +5,6 @@ const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 const GRID_SIZE = 9; // 3x3 grid
 const STIMULUS_DURATION = 500; // ms to show stimulus
 const INTERVAL_DURATION = 2500; // ms between stimuli
-const RESPONSE_WINDOW = 3000; // ms to respond
 
 interface GameResults {
   score: number;

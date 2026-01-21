@@ -1,4 +1,4 @@
-import { ExerciseType, ExerciseStats, SessionMetrics } from './exercise';
+import type { ExerciseType, ExerciseStats, SessionMetrics } from './exercise';
 
 export interface ProgressStats {
   totalSessions: number;

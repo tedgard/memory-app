@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { UserProfile, UserLevel, StreakData, UserGoal, ExperienceLevel } from '@/types/user';
+import type { UserProfile, UserLevel, StreakData, UserGoal, ExperienceLevel } from '@/types/user';
 
 interface UserState {
   profile: UserProfile | null;

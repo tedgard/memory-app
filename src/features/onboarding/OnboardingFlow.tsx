@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/store/useUserStore';
-import { UserGoal, ExperienceLevel } from '@/types/user';
+import type { UserGoal, ExperienceLevel } from '@/types/user';
 import Footer from '@/components/layout/Footer';
 
 export default function OnboardingFlow() {
