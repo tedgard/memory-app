@@ -14,7 +14,7 @@ export default function VisualGrid({ position }: VisualGridProps) {
         {cells.map((cell) => (
           <div
             key={cell}
-            className="relative w-16 h-16 md:w-20 md:h-20 rounded-lg border-2 border-gray-700"
+            className="relative w-16 h-16 md:w-20 md:h-20 rounded-lg border-2 border-border"
           >
             {position === cell && (
               <motion.div

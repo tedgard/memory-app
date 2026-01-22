@@ -239,8 +239,8 @@ export default function SpatialMemoryGame() {
                   className={`
                     aspect-square rounded-lg transition-all duration-200
                     ${isShowing ? 'bg-primary scale-110 shadow-lg shadow-primary/50' : ''}
-                    ${!isShowing && phase === 'showing' ? 'bg-surface border-2 border-gray-700' : ''}
-                    ${phase === 'recall' && !isInUserSequence ? 'bg-surface border-2 border-gray-700 hover:bg-surface/80 cursor-pointer' : ''}
+                    ${!isShowing && phase === 'showing' ? 'bg-surface border-2 border-border' : ''}
+                    ${phase === 'recall' && !isInUserSequence ? 'bg-surface border-2 border-border hover:bg-surface/80 cursor-pointer' : ''}
                     ${isInUserSequence ? 'bg-primary/50' : ''}
                   `}
                   aria-label={`Cell ${index + 1}`}

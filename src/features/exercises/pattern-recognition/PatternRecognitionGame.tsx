@@ -206,7 +206,7 @@ export default function PatternRecognitionGame() {
                 disabled={phase !== 'input'}
                 className={`
                   aspect-square rounded-lg transition-all
-                  ${filled ? 'bg-primary' : 'bg-surface border-2 border-gray-700'}
+                  ${filled ? 'bg-primary' : 'bg-surface border-2 border-border'}
                   ${phase === 'input' ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
                 `}
                 aria-label={`Cell ${index + 1}`}

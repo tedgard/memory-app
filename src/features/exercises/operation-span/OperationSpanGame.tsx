@@ -278,7 +278,7 @@ export default function OperationSpanGame() {
                 key={letter}
                 onClick={() => handleLetterClick(letter)}
                 disabled={recalledLetters.length >= sequenceLength}
-                className="aspect-square bg-surface border-2 border-gray-700 rounded-lg text-xl font-bold hover:bg-surface/80 hover:border-primary/50 transition-all disabled:opacity-50"
+                className="aspect-square bg-surface border-2 border-border rounded-lg text-xl font-bold hover:bg-surface/80 hover:border-primary/50 transition-all disabled:opacity-50"
               >
                 {letter}
               </button>

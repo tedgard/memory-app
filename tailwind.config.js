@@ -8,15 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#6366f1',        // Indigo - focus/brain
-        secondary: '#8b5cf6',      // Purple - creativity/learning
-        success: '#10b981',        // Green - correct response
-        error: '#ef4444',          // Red - incorrect response
-        warning: '#f59e0b',        // Amber - attention
-        background: '#0f172a',     // Dark slate
-        surface: '#1e293b',        // Slate - cards
-        'text-primary': '#f1f5f9', // Light slate
-        'text-secondary': '#94a3b8', // Gray
+        primary: 'hsl(var(--primary))',
+        secondary: 'hsl(var(--secondary))',
+        success: 'hsl(var(--success))',
+        error: 'hsl(var(--error))',
+        warning: 'hsl(var(--warning))',
+        background: 'hsl(var(--background))',
+        surface: 'hsl(var(--surface))',
+        'text-primary': 'hsl(var(--text-primary))',
+        'text-secondary': 'hsl(var(--text-secondary))',
+        border: 'hsl(var(--border))',
       },
       animation: {
         'pulse-success': 'pulse-success 0.3s ease-in-out',
