@@ -8,14 +8,14 @@ describe('useUserStore', () => {
 
   describe('createProfile', () => {
     it('should create a new user profile', () => {
-      const { createProfile, profile } = useUserStore.getState()
+      const { createProfile } = useUserStore.getState()
 
-      createProfile('Test User', 'improve-memory', 'beginner')
+      createProfile('Test User', 'memory', 'beginner')
 
       const newProfile = useUserStore.getState().profile
       expect(newProfile).toBeTruthy()
       expect(newProfile?.name).toBe('Test User')
-      expect(newProfile?.goal).toBe('improve-memory')
+      expect(newProfile?.goal).toBe('memory')
       expect(newProfile?.experienceLevel).toBe('beginner')
       expect(newProfile?.onboardingCompleted).toBe(false)
       expect(newProfile?.id).toBeTruthy()
@@ -24,7 +24,7 @@ describe('useUserStore', () => {
     it('should set default preferences', () => {
       const { createProfile } = useUserStore.getState()
 
-      createProfile('Test User', 'boost-iq', 'intermediate')
+      createProfile('Test User', 'intelligence', 'intermediate')
 
       const profile = useUserStore.getState().profile
       expect(profile?.preferences.soundEnabled).toBe(true)
@@ -39,7 +39,7 @@ describe('useUserStore', () => {
     it('should update profile fields', () => {
       const { createProfile, updateProfile } = useUserStore.getState()
 
-      createProfile('Test User', 'improve-memory', 'beginner')
+      createProfile('Test User', 'memory', 'beginner')
       updateProfile({ name: 'Updated Name' })
 
       const profile = useUserStore.getState().profile
@@ -57,7 +57,7 @@ describe('useUserStore', () => {
     it('should update nested preferences', () => {
       const { createProfile, updateProfile } = useUserStore.getState()
 
-      createProfile('Test User', 'improve-memory', 'beginner')
+      createProfile('Test User', 'memory', 'beginner')
       updateProfile({
         preferences: {
           ...useUserStore.getState().profile!.preferences,
@@ -74,7 +74,7 @@ describe('useUserStore', () => {
     it('should mark onboarding as completed', () => {
       const { createProfile, completeOnboarding } = useUserStore.getState()
 
-      createProfile('Test User', 'improve-memory', 'beginner')
+      createProfile('Test User', 'memory', 'beginner')
       expect(useUserStore.getState().profile?.onboardingCompleted).toBe(false)
 
       completeOnboarding()
@@ -90,7 +90,7 @@ describe('useUserStore', () => {
 
   describe('addXP', () => {
     it('should add XP without leveling up', () => {
-      const { addXP, level } = useUserStore.getState()
+      const { addXP } = useUserStore.getState()
 
       addXP(50)
 
@@ -268,7 +268,7 @@ describe('useUserStore', () => {
     it('should reset all user data', () => {
       const { createProfile, addXP, updateStreak, resetProfile } = useUserStore.getState()
 
-      createProfile('Test User', 'improve-memory', 'beginner')
+      createProfile('Test User', 'memory', 'beginner')
       addXP(100)
       updateStreak()
 

@@ -178,7 +178,6 @@ export default function SequenceMemoryGame() {
                              sequence[showingIndex] === index;
 
             // Check if user has clicked this color in their current attempt
-            const clickCount = userSequence.filter(c => c === index).length;
             const isJustClicked = userSequence.length > 0 && userSequence[userSequence.length - 1] === index;
 
             return (

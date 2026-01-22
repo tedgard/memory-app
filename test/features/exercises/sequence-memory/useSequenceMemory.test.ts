@@ -6,7 +6,6 @@ import { useProgressStore } from '@/store/useProgressStore'
 describe('useSequenceMemory', () => {
   beforeEach(() => {
     useProgressStore.getState().resetProgress()
-    vi.clearAllTimers()
   })
 
   it('should initialize with ready phase', () => {

@@ -15,6 +15,8 @@ describe('useProgressStore', () => {
     duration: 300,
     timestamp: new Date(),
     difficulty: 2,
+    trialsCompleted: 20,
+    reactionTime: 500,
     ...overrides,
   })
 
