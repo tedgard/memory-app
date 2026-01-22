@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useUserStore } from '@/store/useUserStore';
+import { useSettingsStore } from '@/store/useSettingsStore';
 import MainLayout from '@/components/layout/MainLayout';
 import Dashboard from '@/features/dashboard/Dashboard';
 import ExercisesPage from '@/features/exercises/ExercisesPage';
@@ -16,7 +18,25 @@ import AchievementsPage from '@/features/achievements/AchievementsPage';
 
 function App() {
   const profile = useUserStore((state) => state.profile);
+  const theme = useSettingsStore((state) => state.theme);
   const onboardingCompleted = profile?.onboardingCompleted ?? false;
+
+  // Apply theme to HTML element
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    } else if (theme === 'dark') {
+      root.classList.remove('light');
+      root.classList.add('dark');
+    } else {
+      // auto mode - check system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.classList.remove('light', 'dark');
+      root.classList.add(prefersDark ? 'dark' : 'light');
+    }
+  }, [theme]);
 
   // Show onboarding for new users
   if (!onboardingCompleted) {
