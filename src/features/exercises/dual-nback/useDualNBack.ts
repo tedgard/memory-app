@@ -131,6 +131,17 @@ export default function useDualNBack() {
     visualHistory.current.push(visual);
     audioHistory.current.push(audio);
 
+    // Speak the letter using Web Speech API
+    if ('speechSynthesis' in window && audio) {
+      const utterance = new SpeechSynthesisUtterance(audio);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+      // Cancel any ongoing speech and speak the new letter
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
     // Hide stimulus after duration
     const hideTimer = setTimeout(() => {
       setVisualPosition(null);

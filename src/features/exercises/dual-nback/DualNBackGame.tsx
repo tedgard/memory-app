@@ -236,12 +236,12 @@ export default function DualNBackGame() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Card className="p-8 bg-surface">
+      <Card className="p-4 md:p-8 bg-surface">
         {/* Progress Header */}
-        <div className="mb-6">
+        <div className="mb-4 md:mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-semibold">{nLevel}-Back Training</span>
-            <span className="text-sm text-text-secondary">
+            <span className="text-xs md:text-sm font-semibold">{nLevel}-Back Training</span>
+            <span className="text-xs md:text-sm text-text-secondary">
               Trial {currentTrial + 1} / {totalTrials}
             </span>
           </div>
@@ -249,58 +249,56 @@ export default function DualNBackGame() {
         </div>
 
         {/* Visual Grid */}
-        <div className="mb-8">
+        <div className="mb-6 md:mb-8">
           <VisualGrid position={visualPosition} />
         </div>
 
         {/* Audio Display */}
-        <div className="mb-8 text-center">
-          <div className="inline-block p-8 bg-background rounded-lg">
-            <p className="text-sm text-text-secondary mb-2">Current Letter</p>
-            <p className="text-6xl font-bold text-primary">
+        <div className="mb-6 md:mb-8 text-center">
+          <div className="inline-block p-4 md:p-8 bg-background rounded-lg">
+            <p className="text-xs md:text-sm text-text-secondary mb-2">Current Letter</p>
+            <p className="text-5xl md:text-6xl font-bold text-primary">
               {audioLetter || '-'}
             </p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
           <Button
             onClick={handleVisualMatch}
             disabled={!isPlaying}
             size="lg"
-            className="h-20 text-lg bg-secondary hover:bg-secondary/90"
+            className="h-auto py-4 md:py-6 flex flex-col items-center justify-center bg-secondary hover:bg-secondary/90"
           >
-            Visual Match
-            <br />
-            <span className="text-sm opacity-75">Position matches {nLevel} back</span>
+            <span className="text-base md:text-lg font-semibold">Visual Match</span>
+            <span className="text-xs md:text-sm opacity-75 mt-1">Position {nLevel} back</span>
           </Button>
 
           <Button
             onClick={handleAudioMatch}
             disabled={!isPlaying}
             size="lg"
-            className="h-20 text-lg bg-primary hover:bg-primary/90"
+            className="h-auto py-4 md:py-6 flex flex-col items-center justify-center bg-primary hover:bg-primary/90"
           >
-            Audio Match
-            <br />
-            <span className="text-sm opacity-75">Letter matches {nLevel} back</span>
+            <span className="text-base md:text-lg font-semibold">Audio Match</span>
+            <span className="text-xs md:text-sm opacity-75 mt-1">Letter {nLevel} back</span>
           </Button>
         </div>
 
         {/* Stats Display */}
-        <div className="mt-6 grid grid-cols-3 gap-4 text-center">
+        <div className="grid grid-cols-3 gap-2 md:gap-4 text-center">
           <div>
-            <p className="text-sm text-text-secondary">Visual Correct</p>
-            <p className="text-2xl font-bold text-success">{correctVisual}</p>
+            <p className="text-xs md:text-sm text-text-secondary">Visual Correct</p>
+            <p className="text-xl md:text-2xl font-bold text-success">{correctVisual}</p>
           </div>
           <div>
-            <p className="text-sm text-text-secondary">Audio Correct</p>
-            <p className="text-2xl font-bold text-primary">{correctAudio}</p>
+            <p className="text-xs md:text-sm text-text-secondary">Audio Correct</p>
+            <p className="text-xl md:text-2xl font-bold text-primary">{correctAudio}</p>
           </div>
           <div>
-            <p className="text-sm text-text-secondary">False Positives</p>
-            <p className="text-2xl font-bold text-error">{falsePositives}</p>
+            <p className="text-xs md:text-sm text-text-secondary">False Positives</p>
+            <p className="text-xl md:text-2xl font-bold text-error">{falsePositives}</p>
           </div>
         </div>
       </Card>
