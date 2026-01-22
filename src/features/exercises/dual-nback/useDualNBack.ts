@@ -133,7 +133,8 @@ export default function useDualNBack() {
 
     // Speak the letter using Web Speech API
     if ('speechSynthesis' in window && audio) {
-      const utterance = new SpeechSynthesisUtterance(audio);
+      // Convert to lowercase to avoid "Capital" announcement
+      const utterance = new SpeechSynthesisUtterance(audio.toLowerCase());
       utterance.rate = 1.0;
       utterance.pitch = 1.0;
       utterance.volume = 1.0;
