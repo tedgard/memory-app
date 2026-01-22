@@ -81,16 +81,68 @@ export default function Dashboard() {
             </Link>
           </Card>
 
-          <Card className="p-6 bg-surface/50 opacity-60">
-            <div className="text-4xl mb-3">🔢</div>
-            <h3 className="text-xl font-bold mb-2">Sequence Memory</h3>
-            <p className="text-sm text-text-secondary mb-3">Coming Soon</p>
+          <Card className="p-6 bg-surface hover:bg-surface/80 transition-colors cursor-pointer">
+            <Link to="/exercises/sequence-memory" className="block">
+              <div className="text-4xl mb-3">🔢</div>
+              <h3 className="text-xl font-bold mb-2">Sequence Memory</h3>
+              <p className="text-sm text-text-secondary mb-3">
+                Remember and reproduce progressively longer sequences
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-secondary">Available</span>
+                <span className="text-xs text-text-secondary">
+                  Level {stats.exerciseProgress['sequence-memory'].currentDifficulty}
+                </span>
+              </div>
+            </Link>
           </Card>
 
-          <Card className="p-6 bg-surface/50 opacity-60">
-            <div className="text-4xl mb-3">🎨</div>
-            <h3 className="text-xl font-bold mb-2">Pattern Recognition</h3>
-            <p className="text-sm text-text-secondary mb-3">Coming Soon</p>
+          <Card className="p-6 bg-surface hover:bg-surface/80 transition-colors cursor-pointer">
+            <Link to="/exercises/pattern-recognition" className="block">
+              <div className="text-4xl mb-3">🎨</div>
+              <h3 className="text-xl font-bold mb-2">Pattern Recognition</h3>
+              <p className="text-sm text-text-secondary mb-3">
+                Study and recreate visual patterns from memory
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-secondary">Available</span>
+                <span className="text-xs text-text-secondary">
+                  Level {stats.exerciseProgress['pattern-recognition'].currentDifficulty}
+                </span>
+              </div>
+            </Link>
+          </Card>
+
+          <Card className="p-6 bg-surface hover:bg-surface/80 transition-colors cursor-pointer">
+            <Link to="/exercises/operation-span" className="block">
+              <div className="text-4xl mb-3">➕</div>
+              <h3 className="text-xl font-bold mb-2">Operation Span</h3>
+              <p className="text-sm text-text-secondary mb-3">
+                Solve math problems while remembering letters
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-secondary">Available</span>
+                <span className="text-xs text-text-secondary">
+                  Level {stats.exerciseProgress['operation-span'].currentDifficulty}
+                </span>
+              </div>
+            </Link>
+          </Card>
+
+          <Card className="p-6 bg-surface hover:bg-surface/80 transition-colors cursor-pointer">
+            <Link to="/exercises/spatial-memory" className="block">
+              <div className="text-4xl mb-3">📍</div>
+              <h3 className="text-xl font-bold mb-2">Spatial Memory Grid</h3>
+              <p className="text-sm text-text-secondary mb-3">
+                Watch and recall spatial sequences - Corsi block test
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-secondary">Available</span>
+                <span className="text-xs text-text-secondary">
+                  Level {stats.exerciseProgress['spatial-memory'].currentDifficulty}
+                </span>
+              </div>
+            </Link>
           </Card>
         </div>
       </div>
