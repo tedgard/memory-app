@@ -43,6 +43,15 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests with UI
+npm run test:ui
 ```
 
 Visit `http://localhost:5173` to start training!
@@ -208,6 +217,46 @@ Based on 2025-2026 cognitive neuroscience research:
 4. **Progressive Challenge**: Adaptive difficulty maintains optimal cognitive load
 5. **Motivational**: Visible progress, streaks, achievements, celebrations
 6. **Personal & Private**: No accounts, social features, or data sharing - everything stored locally
+
+## 🧪 Testing
+
+### Test Suite
+
+Comprehensive test coverage using **Vitest** and **React Testing Library** with Java-style test structure.
+
+**Test Structure:**
+```
+test/
+├── store/              # Zustand store tests
+├── lib/                # Utility function tests
+├── components/         # Component tests (UI, layout, etc.)
+├── features/           # Feature and exercise tests
+└── data/               # Configuration tests
+```
+
+**Running Tests:**
+```bash
+# Run tests in watch mode
+npm test
+
+# Run tests once
+npm run test:run
+
+# Interactive UI mode
+npm run test:ui
+
+# Generate coverage report
+npm run test:coverage
+```
+
+**Coverage Targets:** 80% for lines, functions, branches, and statements
+
+**Coverage Reports:**
+- **Terminal**: Text summary after running coverage
+- **HTML**: Open `coverage/index.html` for detailed interactive report
+- **LCOV**: `coverage/lcov.info` for CI/CD integration
+
+See `test/README.md` for detailed testing documentation.
 
 ## ⚙️ Configuration
 

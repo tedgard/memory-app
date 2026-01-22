@@ -236,12 +236,134 @@ This triggers:
 ## Build & Deploy
 
 ```bash
-npm run dev      # Dev server on :5173
-npm run build    # Production build to dist/
-npm run preview  # Preview production build
+npm run dev              # Dev server on :5173
+npm run build            # Production build to dist/
+npm run preview          # Preview production build
+npm test                 # Run tests in watch mode
+npm run test:run         # Run tests once
+npm run test:ui          # Interactive test UI
+npm run test:coverage    # Generate coverage report
 ```
 
 **Deployment:** Static hosting only (Vercel, Netlify, GitHub Pages, etc.)
+
+## Testing
+
+### Test Framework
+- **Vitest** - Fast, Vite-native test runner
+- **React Testing Library** - Component testing
+- **@testing-library/user-event** - User interaction simulation
+- **@vitest/ui** - Interactive test UI
+- **@vitest/coverage-v8** - Code coverage
+
+### Test Structure (Java-style)
+```
+test/                           # Mirrors src/ structure
+├── setup.ts                    # Global test setup and mocks
+├── store/                      # Store tests
+│   ├── useUserStore.test.ts
+│   ├── useProgressStore.test.ts
+│   └── useSettingsStore.test.ts
+├── lib/                        # Utility tests
+│   └── utils.test.ts
+├── components/                 # Component tests
+│   ├── ui/
+│   │   └── button.test.tsx
+│   └── layout/
+│       └── Footer.test.tsx
+├── features/                   # Feature tests
+│   ├── exercises/
+│   │   └── sequence-memory/
+│   │       └── useSequenceMemory.test.ts
+│   └── ...
+└── data/                       # Config/data tests
+    └── achievements.test.ts
+```
+
+### Coverage Targets
+- Lines: 80%
+- Functions: 80%
+- Branches: 80%
+- Statements: 80%
+
+### Test Categories
+
+1. **Store Tests** - All Zustand stores with full action coverage
+2. **Utility Tests** - Pure functions (cn, formatters)
+3. **Component Tests** - UI components, layout, interactions
+4. **Hook Tests** - Custom hooks (especially exercise hooks)
+5. **Data Tests** - Achievements, static configs
+
+### Key Test Files
+
+**Store Tests:**
+- `test/store/useUserStore.test.ts` - Profile, XP, streaks, freeze cards
+- `test/store/useProgressStore.test.ts` - Sessions, stats, adaptive difficulty
+- `test/store/useSettingsStore.test.ts` - Settings state management
+
+**Hook Tests:**
+- `test/features/exercises/sequence-memory/useSequenceMemory.test.ts` - Full game flow
+
+**Component Tests:**
+- `test/components/ui/button.test.tsx` - All variants, sizes, interactions
+- `test/components/layout/Footer.test.tsx` - Footer rendering
+
+**Data Tests:**
+- `test/data/achievements.test.ts` - Achievement structure and progression
+
+### Running Tests
+
+**Development workflow:**
+```bash
+npm test                    # Watch mode (re-runs on file change)
+```
+
+**Before committing:**
+```bash
+npm run test:coverage       # Check coverage meets 80% threshold
+```
+
+**Debugging tests:**
+```bash
+npm run test:ui             # Visual test runner in browser
+```
+
+### Writing Tests
+
+Always follow existing patterns:
+
+```typescript
+// Store test example
+import { describe, it, expect, beforeEach } from 'vitest'
+import { useUserStore } from '@/store/useUserStore'
+
+describe('useUserStore', () => {
+  beforeEach(() => {
+    useUserStore.getState().resetProfile()
+  })
+
+  it('should create profile', () => {
+    const { createProfile } = useUserStore.getState()
+    createProfile('Test', 'improve-memory', 'beginner')
+    expect(useUserStore.getState().profile?.name).toBe('Test')
+  })
+})
+```
+
+### Coverage Report
+
+After running `npm run test:coverage`:
+- **Terminal**: Summary in console
+- **HTML**: Open `coverage/index.html` for detailed report
+- **LCOV**: `coverage/lcov.info` for CI tools
+
+### Global Mocks (setup.ts)
+
+- **Howler.js** - Audio playback (no real audio in tests)
+- **IntersectionObserver** - For UI components
+- **ResizeObserver** - For responsive components
+- **matchMedia** - For theme detection
+- **localStorage** - Cleared after each test
 
 ## Common Modifications
 

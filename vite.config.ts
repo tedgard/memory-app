@@ -5,6 +5,32 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './test/setup.ts',
+    css: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html', 'lcov'],
+      exclude: [
+        'node_modules/',
+        'test/',
+        '**/*.d.ts',
+        '**/*.config.*',
+        '**/mockData',
+        'dist/',
+        '.eslintrc.cjs',
+        'src/main.tsx',
+      ],
+      include: ['src/**/*.{ts,tsx}'],
+      all: true,
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+  },
   plugins: [
     react(),
     VitePWA({
