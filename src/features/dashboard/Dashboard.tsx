@@ -9,10 +9,10 @@ export default function Dashboard() {
   const streak = useUserStore((state) => state.streak);
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="max-w-7xl mx-auto space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Welcome Back!</h1>
-        <p className="text-text-secondary">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome Back!</h1>
+        <p className="text-sm md:text-base text-text-secondary">
           Ready to boost your working memory? Let's get started with today's training.
         </p>
       </div>
@@ -41,23 +41,23 @@ export default function Dashboard() {
       </div>
 
       {/* Daily Challenge */}
-      <Card className="p-8 bg-gradient-to-r from-primary/20 to-secondary/20 border-primary/30">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">Today's Challenge</h2>
-            <p className="text-text-secondary mb-4">
+      <Card className="p-4 md:p-8 bg-gradient-to-r from-primary/20 to-secondary/20 border-primary/30">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex-1">
+            <h2 className="text-xl md:text-2xl font-bold mb-2">Today's Challenge</h2>
+            <p className="text-sm md:text-base text-text-secondary mb-4">
               Complete a Dual N-Back session to maintain your streak
             </p>
-            <div className="flex gap-3">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
                 <Link to="/exercises/dual-nback">Start Training</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                 <Link to="/exercises">Browse All Exercises</Link>
               </Button>
             </div>
           </div>
-          <div className="text-8xl">🎯</div>
+          <div className="text-4xl md:text-8xl">🎯</div>
         </div>
       </Card>
 

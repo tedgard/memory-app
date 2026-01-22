@@ -23,6 +23,7 @@ const initialStats: ProgressStats = {
   averageAccuracy: 0,
   improvementRate: 0,
   currentStreak: 0,
+  perfectSessions: 0,
   exerciseProgress: {
     'dual-nback': {
       totalSessions: 0,
@@ -116,6 +117,7 @@ export const useProgressStore = create<ProgressState>()(
           totalTime: stats.totalTime + session.duration / 60,
           averageAccuracy:
             (stats.averageAccuracy * stats.totalSessions + session.accuracy) / (stats.totalSessions + 1),
+          perfectSessions: stats.perfectSessions + (session.accuracy === 100 ? 1 : 0),
           exerciseProgress: {
             ...stats.exerciseProgress,
             [session.exerciseType]: exerciseStats,

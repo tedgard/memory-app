@@ -6,6 +6,7 @@ export interface ProgressStats {
   averageAccuracy: number;
   improvementRate: number; // percentage
   currentStreak: number;
+  perfectSessions: number; // sessions with 100% accuracy
   exerciseProgress: Record<ExerciseType, ExerciseStats>;
   weeklyGoal: number; // sessions per week
   weeklyCompleted: number;
