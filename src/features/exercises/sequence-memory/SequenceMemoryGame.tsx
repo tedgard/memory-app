@@ -165,18 +165,21 @@ export default function SequenceMemoryGame() {
           <p className="text-sm text-text-secondary">
             {currentPhase === 'showing'
               ? 'Memorize the sequence'
-              : `Click ${sequence.length} colors in order (${userSequence.length}/${sequence.length})`}
+              : `Click ${sequence.length} ${sequence.length === 1 ? 'color' : 'colors'} in order (${userSequence.length}/${sequence.length})`}
           </p>
         </div>
 
         {/* Color Grid */}
         <div className="grid grid-cols-4 gap-3 md:gap-4 max-w-lg mx-auto">
           {colors.map((color, index) => {
-            const isShowing = currentPhase === 'showing' && showingIndex === index;
-            const isSelected = userSequence.includes(index);
-            const isCorrectSoFar =
-              isSelected &&
-              userSequence[userSequence.lastIndexOf(index)] === sequence[userSequence.lastIndexOf(index)];
+            // Check if this color should be showing during the sequence display
+            const isShowing = currentPhase === 'showing' &&
+                             showingIndex >= 0 &&
+                             sequence[showingIndex] === index;
+
+            // Check if user has clicked this color in their current attempt
+            const clickCount = userSequence.filter(c => c === index).length;
+            const isJustClicked = userSequence.length > 0 && userSequence[userSequence.length - 1] === index;
 
             return (
               <button
@@ -187,7 +190,7 @@ export default function SequenceMemoryGame() {
                   aspect-square rounded-lg transition-all duration-200
                   ${currentPhase === 'input' ? 'cursor-pointer hover:scale-105' : 'cursor-default'}
                   ${isShowing ? 'scale-110 shadow-lg' : ''}
-                  ${isSelected && !isCorrectSoFar ? 'opacity-50' : ''}
+                  ${isJustClicked ? 'ring-2 ring-white' : ''}
                 `}
                 style={{
                   backgroundColor: color,
@@ -202,7 +205,7 @@ export default function SequenceMemoryGame() {
         {currentPhase === 'input' && (
           <div className="mt-6 text-center">
             <p className="text-xs text-text-secondary">
-              Sequence Length: {sequenceLength} colors
+              Sequence Length: {sequenceLength} {sequenceLength === 1 ? 'color' : 'colors'}
             </p>
           </div>
         )}

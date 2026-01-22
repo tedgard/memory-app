@@ -104,9 +104,14 @@ export const useProgressStore = create<ProgressState>()(
         exerciseStats.averageScore = (prevScoreTotal + session.score) / exerciseStats.totalSessions;
 
         // Update current difficulty if needed (adaptive)
-        if (session.accuracy >= 85 && exerciseStats.currentDifficulty < 10) {
+        // Set minimum difficulty based on exercise type
+        const minDifficulty = session.exerciseType === 'sequence-memory' ? 3 :
+                             session.exerciseType === 'dual-nback' ? 2 : 1;
+        const maxDifficulty = 10;
+
+        if (session.accuracy >= 85 && exerciseStats.currentDifficulty < maxDifficulty) {
           exerciseStats.currentDifficulty += 1;
-        } else if (session.accuracy < 60 && exerciseStats.currentDifficulty > 1) {
+        } else if (session.accuracy < 60 && exerciseStats.currentDifficulty > minDifficulty) {
           exerciseStats.currentDifficulty -= 1;
         }
 

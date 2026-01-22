@@ -25,7 +25,9 @@ export default function useSequenceMemory() {
   const exerciseStats = useProgressStore((state) => state.stats.exerciseProgress['sequence-memory']);
 
   const [sequenceLength] = useState(() => {
-    return exerciseStats.currentDifficulty || 3;
+    // Ensure minimum sequence length of 3 for playability
+    const difficulty = exerciseStats.currentDifficulty || 3;
+    return Math.max(3, difficulty);
   });
 
   // Game state
