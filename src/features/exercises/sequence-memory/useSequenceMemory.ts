@@ -51,7 +51,7 @@ export default function useSequenceMemory() {
     setSequence(newSequence);
     setUserSequence([]);
     setCurrentPhase('showing');
-    setShowingIndex(0);
+    setShowingIndex(-1);
     setRound(0);
     setCorrectRounds(0);
     setResults(null);
@@ -62,24 +62,33 @@ export default function useSequenceMemory() {
     setSequence(newSequence);
     setUserSequence([]);
     setCurrentPhase('showing');
-    setShowingIndex(0);
+    setShowingIndex(-1);
   }, [generateSequence]);
 
   // Show sequence animation
   useEffect(() => {
-    if (currentPhase !== 'showing') return;
+    if (currentPhase !== 'showing' || sequence.length === 0) return;
 
-    if (showingIndex < sequence.length) {
+    if (showingIndex === -1) {
+      // Start showing first item
+      const timer = setTimeout(() => {
+        setShowingIndex(0);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+
+    if (showingIndex < sequence.length - 1) {
+      // Show next item
       const timer = setTimeout(() => {
         setShowingIndex(showingIndex + 1);
       }, DISPLAY_TIME);
       return () => clearTimeout(timer);
-    } else {
-      // Sequence finished showing
+    } else if (showingIndex === sequence.length - 1) {
+      // Finished showing last item, wait then go to input
       const timer = setTimeout(() => {
         setShowingIndex(-1);
         setCurrentPhase('input');
-      }, PAUSE_TIME);
+      }, DISPLAY_TIME + PAUSE_TIME);
       return () => clearTimeout(timer);
     }
   }, [currentPhase, showingIndex, sequence.length]);
